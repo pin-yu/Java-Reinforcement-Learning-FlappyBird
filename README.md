@@ -1,4 +1,4 @@
-# Reinforcement learning environment based on Flappybird with Java
+# Flappybird RL environment with Java
 
 This project is mainly modified from [PLE](https://github.com/ntasfi/PyGame-Learning-Environment).
 
