@@ -16,7 +16,7 @@ public class Environment {
 	public static final int WIDTH = 288;
 	public static final int HEIGHT = 512;
 	public static final int PILLAR_GAP = 100;
-	public static final Random r = new Random();
+	public static final Random r = new Random(88888);
 
 	private int lives;
 	private double score;
@@ -106,6 +106,7 @@ public class Environment {
 	}
 
 	private void step(Action action) {
+		score = 0;
 		if (action == Action.FLAP) {
 			bird.flap();
 		}
@@ -123,7 +124,7 @@ public class Environment {
 
 			// player pass the pillar
 			if ((p.posX() - p.width() / 2) <= bird.posX() && bird.posX() < (p.posX() - p.width() / 2 + 4)) {
-				score += Reward.POSITIVE.value();
+				score = Reward.POSITIVE.value();
 			}
 
 			// is it out of the screen?
@@ -148,7 +149,7 @@ public class Environment {
 		}
 
 		if (lives <= 0) {
-			score += Reward.LOSS.value();
+			score = Reward.LOSS.value();
 		}
 	}
 
