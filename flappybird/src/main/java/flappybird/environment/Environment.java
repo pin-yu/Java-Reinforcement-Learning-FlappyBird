@@ -19,7 +19,6 @@ public class Environment {
 	public static final Random r = new Random(88888);
 
 	private int lives;
-	private double score;
 	// The value would be 50.
 	private int pillarMin = PILLAR_GAP / 4;
 	// I don't know the meaning of the formula, but the value would be 192.
@@ -54,13 +53,8 @@ public class Environment {
 
 		bird.init(initPos);
 		lives = 1;
-		score = 0;
 
 		System.out.println("finished - init");
-	}
-
-	public double getScore() {
-		return score;
 	}
 
 	public void generatePillar(Pillar p, int offset) {
@@ -101,12 +95,11 @@ public class Environment {
 	}
 
 	public double act(Action action) {
-		step(action);
-		return score;
+		return step(action);
 	}
 
-	private void step(Action action) {
-		score = 0;
+	private double step(Action action) {
+		double score = 0;
 		if (action == Action.FLAP) {
 			bird.flap();
 		}
@@ -151,6 +144,8 @@ public class Environment {
 		if (lives <= 0) {
 			score = Reward.LOSS.value();
 		}
+		
+		return score;
 	}
 
 	public void printState() {
