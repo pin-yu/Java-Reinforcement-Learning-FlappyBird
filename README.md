@@ -9,3 +9,7 @@ Currently, this java flappybird provides <b>only</b> state-based state instead o
 Please consider the `Run.java` file.
 
 The game will be locked if you don't provide any actions.
+
+## contribution
+
+Thanks 超偉 for debugging and revision. 
